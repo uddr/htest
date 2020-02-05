@@ -41,3 +41,7 @@ output "kubeconfig" {
 output "email" {
   value = "${data.google_client_openid_userinfo.me.email}"
 }
+
+output "depends_on_gke_np" {
+  value     = "${google_container_node_pool.cluster_nodes.cluster}"
+}

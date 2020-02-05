@@ -4,3 +4,6 @@ terraform.tfstate
 terraform.tfvars
 *.tfstate*
 .test-data
+
+# K8s config
+*kubeconfig

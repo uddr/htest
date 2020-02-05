@@ -32,7 +32,14 @@ service:
   annotations: {}
   labels: {}
   loadBalancerSourceRanges: []
-  type: ClusterIP
-# grafana:
+  type: LoadBalancer
+prometheus:
+  ingress:
+    enabled: true
+  service:
+    type: LoadBalancer
+grafana:
+  service:
+    type: LoadBalancer
 #   rbac:
 #     create: false

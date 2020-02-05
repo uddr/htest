@@ -4,7 +4,6 @@ resource "google_container_cluster" "primary" {
   initial_node_count       = 1
   remove_default_node_pool = true
   min_master_version = var.master_kubernetes_version
-  #node_version = var.kubernetes_version
   location      = var.region
 
   node_config {
