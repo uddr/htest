@@ -10,10 +10,17 @@ provider "google" {
   credentials = file(var.config_file)
 }
 
+terraform {
+  backend "gcs" {
+    bucket   = "dark-garden-256113-tfstate"
+    prefix   = "environments/dev"
+  }
+}
+
 resource "google_storage_bucket_object" "kubeconfig" {
   name   = "kubeconfig"
   source = module.gke_cluster.kubeconfig
-  bucket = var.gcs_bucket
+  bucket = var.k8s_bucket
 }
 
 module "gke_cluster" {

@@ -18,19 +18,19 @@ data "helm_repository" "stable" {
   url  = "https://kubernetes-charts.storage.googleapis.com"
 }
 
-#resource "null_resource" "prometheus_operator" {
-#  provisioner "local-exec" {
-#    command = "helm --kubeconfig=modules/gke/kubeconfig install prometheus stable/prometheus-operator"
-#  }
-#  depends_on = [var.depends_on_gke_np]
-#}
-#
-#resource "null_resource" "vault-helm" {
-#  provisioner "local-exec" {
-#    command = "helm --kubeconfig=modules/gke/kubeconfig install vault ../vault-helm"
-#  }
-#  depends_on = [var.depends_on_gke_np]
-#}
+resource "null_resource" "prometheus_operator" {
+  provisioner "local-exec" {
+    command = "helm --kubeconfig=modules/gke/kubeconfig install -f modules/helm/monitoring/prometheus/values.yml prometheus stable/prometheus-operator"
+  }
+  depends_on = [var.depends_on_gke_np]
+}
+
+resource "null_resource" "vault-helm" {
+  provisioner "local-exec" {
+    command = "helm --kubeconfig=modules/gke/kubeconfig install vault ../vault-helm"
+  }
+  depends_on = [var.depends_on_gke_np]
+}
 
 #resource "helm_release" "prometheus_operator" {
 #  name       = "prometheus-operator"

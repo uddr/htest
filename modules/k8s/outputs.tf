@@ -3,5 +3,5 @@ output "helm_service_account" {
 }
 
 output "helm_namespace" {
-  value = "${kubernetes_service_account.tiller.metadata.0.namespace}"
+  value = "default"
 }

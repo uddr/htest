@@ -1,9 +1,8 @@
 variable "config_file" {
   type      = string
 }
-variable "gcs_bucket" {
+variable "k8s_bucket" {
   type      = string
-  default   = "dark-garden-256113-tfstate"
 }
 variable "region" {
   type      = string
@@ -11,7 +10,6 @@ variable "region" {
 }
 variable "project_name" {
   type      = string
-  default   = "dark-garden-256113"
 }
 variable "cluster_name" {
   type      = string
